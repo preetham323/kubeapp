@@ -9,8 +9,8 @@ spec:
   selector:
     matchLabels:
       app: vprodb
-    replicas: 1
-    template:
+  replicas: 1
+  template:
       metadata:
         labels:
           app: vprodb
@@ -20,12 +20,12 @@ spec:
             image: kalangi/vprofile:v1
             args:
               - "--ignore-db-dir=lost+found"
-            voulumeMounts:
-              - mountpath: /var/lib/mysql
+            volumeMounts:
+              - mountPath: /var/lib/mysql
                 name: vpr-db-data
             ports:
-              -name: vprodb-port
-              containerPort: 3306
+                - name: vprodb-port
+                  containerPort: 3306
             env:
               - name: MYSQL_ROOT_PASSWORD
                 valueFrom:
@@ -39,4 +39,4 @@ spec:
           - name: vpro-db-data
             awsElasticBlockStore:
               volumeID: vol-027e67d01f946e647
-              fstype: ext4
+              fsType: ext4
