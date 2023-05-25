@@ -32,10 +32,10 @@ spec:
                   secretKeyRef:
                     name: app-secret
                     Key: db_pass
-          nodeSelector:
+        nodeSelector:
             - zone: us-east-1a
 
-          volumes:
+        volumes:
             - name: vpro-db-data
               awsElasticBlockStore:
                 volumeID: vol-027e67d01f946e647
